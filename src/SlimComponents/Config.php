@@ -1,6 +1,12 @@
 <?php
-namespace src\lib;
+namespace SlimComponents;
 
+/**
+ * Config
+ *
+ * @package slim-components
+ * @author Evgeniy Blinov <evgeniy_blinov@mail.ru>
+**/
 class Config 
 {
     /**

@@ -1,9 +1,15 @@
 <?php
-namespace lib;
+namespace SlimComponents;
 
-use lib\Config;
+use Config;
 use PDO;
 
+/**
+ * DB
+ *
+ * @package slim-components
+ * @author Evgeniy Blinov <evgeniy_blinov@mail.ru>
+**/
 class DB 
 {
     /**

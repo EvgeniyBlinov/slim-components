@@ -2,7 +2,7 @@
     "name": "cent/slim-components",
     "description": "Slim components",
     "license": "MIT",
-    "version": "v0.0.1",
+    "version": "v0.0.2",
     "authors": [
         {
             "name": "Blinov Evgeniy",
@@ -10,7 +10,10 @@
         }
     ],
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "slim/slim":"2.*",
+        "slim/views":"0.1.*",
+        "twig/twig":"1.*"
     },
     "autoload": {
         "psr-0": {
