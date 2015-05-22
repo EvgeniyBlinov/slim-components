@@ -1,6 +1,8 @@
 <?php
 namespace SlimComponents;
 
+use Slim\Slim;
+
 class TwigExtension 
 {
     /**
@@ -17,13 +19,14 @@ class TwigExtension
      * @param \Slim\Slim $app
      * @param array $options
      */
-    public function __construct(\Slim\Slim $app, $options = null)
+    public function __construct(Slim $app, $options = array())
     {
         $this->_app = $app;
         $this->_twig = $app->view->getInstance();
         $this->_twig->addGlobal('app', $this->_app);
 
-        $this->_options = ($options != null) ? $options : $this->getDefaultOptions();
+        $this->_options = $this->getDefaultOptions();
+        $this->setOptions($options);
 
         /******************  Add filters  *************************************/
         $this->buildTranslations();
@@ -42,8 +45,27 @@ class TwigExtension
     public function getDefaultOptions()
     {
         return array(
-            'translations' => array('ru')
+            'translations'  => array('ru'),
+            'messages_path' => $_SERVER["DOCUMENT_ROOT"] . '/../messages',
         );
+    }
+
+    /**
+     * Set options
+     *
+     * @param array $options
+     * @return void
+     **/
+    public function setOptions(array $options)
+    {
+        $defOptions = $this->getDefaultOptions();
+        foreach ($options as $key => $val) {
+            if (!empty($defOptions[$key])) {
+                $this->_options[$key] = $val;
+            }
+        }
+
+        return $this;
     }
 
     /**
@@ -52,7 +74,7 @@ class TwigExtension
     public function buildTranslations()
     {
         foreach ($this->_options['translations'] as $language) {
-            $this->_translations[$language] = require_once "../messages/{$language}.php";
+            $this->_translations[$language] = require $this->_options['messages_path'] . "/{$language}.php";
         }
     }
 
