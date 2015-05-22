@@ -1,0 +1,20 @@
+{
+    "name": "cent/slim-components",
+    "description": "Slim components",
+    "license": "MIT",
+    "version": "v0.0.1",
+    "authors": [
+        {
+            "name": "Blinov Evgeniy",
+            "email": "eblinov@alvioneurope.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-0": {
+            "SlimComponents": "src/"
+        }
+    }
+}
