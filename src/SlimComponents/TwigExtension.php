@@ -3,6 +3,16 @@ namespace SlimComponents;
 
 use Slim\Slim;
 
+/**
+ * TwigExtension
+ *
+ * @package slim-components
+ * @require
+ *   "slim/slim"  : "2.*",
+ *   "slim/views" : "0.1.*",
+ *   "twig/twig"  : "1.*"
+ * @author Evgeniy Blinov <evgeniy_blinov@mail.ru>
+**/
 class TwigExtension 
 {
     /**

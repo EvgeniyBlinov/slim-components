@@ -8,6 +8,7 @@ use PDO;
  * DB
  *
  * @package slim-components
+ * @require PDO
  * @author Evgeniy Blinov <evgeniy_blinov@mail.ru>
 **/
 class DB 
