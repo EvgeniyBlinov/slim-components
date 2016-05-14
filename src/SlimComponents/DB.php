@@ -55,7 +55,7 @@ class DB
                 $dbConfig['mysql']['connect']['password']
             );
         } catch (\Exception $e) {
-            reconstructionPage();
+            //reconstructionPage();
         }
     }
 
