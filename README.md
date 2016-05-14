@@ -3,6 +3,8 @@
 # SlimComponents
 Slim components.
 
+READ dependencies in each library
+
 ## License
 
 [![MIT License][license-image]][license-url]
