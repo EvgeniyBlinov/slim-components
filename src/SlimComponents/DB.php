@@ -1,7 +1,7 @@
 <?php
 namespace SlimComponents;
 
-use Config;
+use SlimComponents\Config;
 use PDO;
 
 /**
