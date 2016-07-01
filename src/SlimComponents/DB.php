@@ -11,7 +11,7 @@ use PDO;
  * @require PDO
  * @author Evgeniy Blinov <evgeniy_blinov@mail.ru>
 **/
-class DB 
+class DB
 {
     /**
      * @var handle
@@ -21,6 +21,10 @@ class DB
      * @var Core
      **/
     private static $instance;
+    /**
+     * @var Callable
+     **/
+    protected $dbFallback;
 
     /**
      * @return Core
@@ -55,9 +59,27 @@ class DB
                 $dbConfig['mysql']['connect']['user'],
                 $dbConfig['mysql']['connect']['password']
             );
+            if (defined('DEBUG') || defined('APP_DEBUG')) {
+                $this->dbh->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            }
         } catch (\Exception $e) {
-            //reconstructionPage();
+            if ($this->dbFallback) {
+                call_user_func_array($this->dbFallback, array($this, $e));
+            }
         }
+    }
+
+    /**
+     * Set DB fallback
+     *
+     * @param Callable $callable
+     * @return DB
+     * @author Evgeniy Blinov <evgeniy_blinov@mail.ru>
+     **/
+    public function setDBFallback(Callable $callback)
+    {
+        $this->dbFallback = $callback;
+        return $this;
     }
 
     /**
