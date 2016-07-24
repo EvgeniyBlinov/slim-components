@@ -9,7 +9,7 @@ READ dependencies in each library
 
 ```sh
 composer config repositories.slim-components git https://github.com/EvgeniyBlinov/slim-components
-composer require "cent/slim-components:v0.0.6"
+composer require "cent/slim-components:v0.0.7"
 ```
 
 ## License
